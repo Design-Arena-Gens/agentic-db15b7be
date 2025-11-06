@@ -1,0 +1,103 @@
+/* Root dark theme */
+:root {
+  --bg: #0b0b0f;
+  --bg-elev: #111118;
+  --card: #13131a;
+  --text: #dfe7ff;
+  --muted: #9aa4bf;
+  --accent: #7aa2ff;
+  --accent-2: #12d5ff;
+  --glow: 0 0 40px rgba(124, 147, 255, 0.35);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+html { color-scheme: dark; }
+body {
+  margin: 0;
+  background: radial-gradient(1200px 800px at 70% -10%, rgba(32,52,120,0.25), transparent),
+              radial-gradient(800px 600px at -10% 20%, rgba(2, 84, 122, 0.2), transparent),
+              var(--bg);
+  color: var(--text);
+}
+
+main { min-height: 100svh; }
+
+/* Typography */
+h1,h2,h3,h4,h5,h6 { margin: 0; }
+p { margin: 0; }
+
+/* Buttons */
+.button {
+  position: relative;
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.08);
+  color: white;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+.button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255,255,255,0.16);
+  box-shadow: var(--glow);
+}
+.button.primary {
+  background: linear-gradient(90deg, rgba(122,162,255,0.25), rgba(18,213,255,0.18));
+  border-color: rgba(122,162,255,0.35);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(180deg, #eaf0ff 10%, #96adff 50%, #7ad6ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 10px 30px rgba(108,154,255,0.15));
+}
+
+/* Ticker */
+.ticker {
+  display: flex;
+  overflow: hidden;
+  gap: 48px;
+  mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+}
+.ticker-track {
+  display: flex;
+  gap: 48px;
+  animation: ticker 26s linear infinite;
+  will-change: transform;
+}
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Subtle card */
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+}
+
+/* Grid overlay */
+.grid-overlay {
+  position: absolute;
+  inset: -1px;
+  background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px, 40px 40px;
+  mask-image: radial-gradient(800px 400px at 50% 0%, black, transparent);
+  pointer-events: none;
+}
+
+/* Safe container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
